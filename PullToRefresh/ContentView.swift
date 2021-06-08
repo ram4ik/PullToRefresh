@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var refreshed = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                Text(refreshed ? "Refreshed" : "Not refreshed")
+                ForEach(0..<10) { i in
+                    Text("\(i) index")
+                }
+            }
+            .navigationTitle("Pull to refresh")
+            // iOS 15
+//            .refreshable {
+//                refreshed = true
+//            }
+        }
     }
 }
 
